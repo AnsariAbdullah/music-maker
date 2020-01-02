@@ -16,15 +16,18 @@ window.addEventListener('load', () => {
 		pad.addEventListener('click', function(){
 			sounds[index].currentTime = 0;
 			sounds[index].play();
-			createBalls(index);
+			createBubbles(index);
 		});
 	});
 	
-	// function for creating balls
-	const createBalls = (index) => {
-		const ball = document.createElement('div');
-		visual.appendChild(ball);
-		ball.style.backgroundColor = colors[index];
-		ball.style.animation = 'jump 1s ease'
+	// function for creating bubbless
+	const createBubbles = (index) => {
+		const bubbles = document.createElement('div');
+		visual.appendChild(bubbles);
+		bubbles.style.backgroundColor = colors[index];
+		bubbles.style.animation = 'jump 1s ease';
+		bubbles.addEventListener('animationend', function(){
+			visual.removeChild(this);
+		});
 	}
 });
